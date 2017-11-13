@@ -81,6 +81,22 @@ class PDOService implements IServiceDB
 		}
 		return $films;//возращает переменную films
 	}
+	
+
+	public function getAllCategories()
+	{	
+		$categories=array();
+		if ($this->connect()) {
+			if ($result = $this->connectDB->query('SELECT * FROM category')) {
+				$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+                foreach($rows as $row){
+					$categories[]=new Category($row['category_id'], $row['name']);
+                 } 
+			}
+		}
+        $this->connectDB=null;
+		return $categories;
+	}
 
 }
 

@@ -30,7 +30,7 @@ class MySQLiService implements IServiceDB
 		}
 		return $films;//возращает переменную films
 	}
-	
+
 	public function getFilmByID($id)// функция получает фильм по его ID
 	{	
 		$film=null;//переменная фильм со значением null
@@ -80,5 +80,19 @@ class MySQLiService implements IServiceDB
 		return $films;//возращает переменную films
 	}
 
-}
 
+	// public function getAllCategories()
+	// {	
+	// 	$categ=array();
+	// 	if ($this->connect()) 
+	// 		if ($res = mysqli_query($this->connectDB, 'SELECT * FROM category')) {
+	// 			while ($catrow = mysqli_fetch_assoc($res)) {
+	// 				$categ[]=new Category($catrow['category_id'], $catrow['name']);
+    //              } 
+	// 			 mysqli_free_result($res);
+	// 		}
+	// 	    mysqli_close($this->connectDB);	
+	// 	}
+	// 	return $categ;
+	// }
+}

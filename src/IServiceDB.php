@@ -7,4 +7,5 @@ interface IServiceDB
     public function getAllFilms();
     public function getFilmByID($id);
     public function getAllFilmsInfo();
+    public function getAllCategories();
 }
