@@ -98,5 +98,20 @@ class PDOService implements IServiceDB
 		return $categories;
 	}
 
+	public function getAllActors()
+	{	
+		$actors=array();
+		if ($this->connect()) {
+			if ($result = $this->connectDB->query('SELECT * FROM actor')) {
+				$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+                foreach($rows as $row){
+					$actors[]=new Actor($row['actor_id'], $row['firstname'], $row['lastname']);
+                 } 
+			}
+		}
+        $this->connectDB=null;
+		return $actors;
+	}
+
 }
 

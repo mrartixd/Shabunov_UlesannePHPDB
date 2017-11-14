@@ -1,13 +1,4 @@
-<?php
-/*Artur Shabunov RDIR 51
-1. Комментарии по‎‎ программе в ‎‎пример кода. MoviesDB ‎‎(15 p.).‎
-‎2. Создайте menu-(Category) (5 стр.)-пожалуйста, добавьте функцию getAllCategories к классу. ‎
-‎3. список фильмов, отобранных в представлении по категориям (5 стр.)‎
-‎4. в окне Создание страницы из актеров (данные сортируются в порядке возрастания по фамилии). Отобразить список фильмов, отобранных актер (5 стр.)‎
-‎Используйте внешний CSS рамок (например, загрузки,...)‎
-*/
-
-require_once "autoloader.php";//подкгружаем php файл в котором происходит
+<?php require_once "autoloader.php";//подкгружаем php файл в котором происходит
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,14 +19,14 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Дом <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Дом </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="films.php">Фильмы</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="actors.php">Актеры</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Актеры<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,16 +61,11 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
 </div>
     </div>
     <div class="col-8">
-	<div class="jumbotron">
-  <h1 class="display-3">Добро пожаловать!</h1>
-  <p class="lead">Сайт посвещен фильмам и его актерам</p>
-  <hr class="my-4">
-  <p>Здесь вы можете найти актеров, фильмы, категории любимых фильмов</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="films.php" role="button">Фильмы</a>
-	<a class="btn btn-primary btn-lg" href="actors.php" role="button">Актеры</a>
-  </p>
-</div>
+    <?php 
+    foreach($db->getAllActors() as $actors){
+        echo $actors->firstname.' '.$actors->lastname.'<br/>';
+    }
+    ?>
     </div>
   </div>
     </body>
