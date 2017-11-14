@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
+          Категории
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <?php  
@@ -44,7 +44,7 @@
   </div>
 </nav>
 
-<div class="container" style="padding-top:20px;">
+<div class="container" style="padding-top:20px; padding-bottom:20px;">
   <div class="row">
     <div class="col-4">
 	<div class="card" style="width: 20rem;">
