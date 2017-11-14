@@ -34,9 +34,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <?php  
-		  $db=new PDOService();
+      $db=new PDOService();
 		  foreach ($db->getAllCategories() as $category){
-				echo '<a class="dropdown-item" href="#">'.$category->name.'</a>';
+				echo '<a class="dropdown-item" href="'.$category->id.'">'.$category->name.'</a>';
 		  }?>
         </div>
       </li>
@@ -46,7 +46,7 @@
 
 <div class="container" style="padding-top:20px; padding-bottom:50px;">
   <div class="row">
-    <div class="col-4">
+    <div class="col-sm">
 	<div class="card" style="width: 20rem;">
   <div class="card-header">
     Задание
@@ -60,12 +60,18 @@
   </ul>
 </div>
     </div>
-    <div class="col-8">
-    <?php
-    foreach($db->getAllFilms() as $films){
-        echo $films->title.'<br/>'.$films->description.' '.$films->releaseYear.' '.$films->length.'<br/><br/>';
-    }
-    ?>
+    <?php foreach($db->getAllFilms() as $films){?>
+    <div class="col-sm"style="padding-bottom:15px;">
+    <div class="card" style="width: 20rem;">
+  <div class="card-body alert-secondary">
+    <h4 class="card-title"><?php echo $films->title; ?></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><?php echo $films->releaseYear; ?></h6>
+    <p class="card-text"><?php echo 'Описание: '.$films->description; ?></p>
+    <p class="card-text"><?php echo 'Длинна фильма: '.$films->length.' ч.'; ?></p>
+  </div>
+</div>
+    </div>
+    <?php } ?>
     </div>
   </div>
     </body>

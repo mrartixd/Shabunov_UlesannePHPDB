@@ -34,9 +34,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <?php  
-		  $db=new PDOService();
+      $db=new PDOService();
 		  foreach ($db->getAllCategories() as $category){
-				echo '<a class="dropdown-item" href="#">'.$category->name.'</a>';
+				echo '<a class="dropdown-item" href="'.$category->id.'">'.$category->name.'</a>';
 		  }?>
         </div>
       </li>
