@@ -61,11 +61,25 @@
 </div>
     </div>
     <div class="col-8">
-    <?php 
-    foreach($db->getAllActors() as $actors){
-        echo $actors->firstname.' '.$actors->lastname.'<br/>';
-    }
-    ?>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+     foreach($db->getAllActors() as $actors) {?>
+    <tr>
+      <th scope="row"><?php echo $actors->id;  ?></th>
+      <td><?php echo $actors->firstname;?></td>
+      <td><?php echo $actors->lastname;?></td>
+    </tr>
+    <?php }?>
+  </tbody>
+</table>
     </div>
   </div>
     </body>
