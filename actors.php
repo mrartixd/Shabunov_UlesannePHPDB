@@ -71,9 +71,10 @@
   </thead>
   <tbody>
     <?php
+    $numbers=1;
      foreach($db->getAllActors() as $actors) {?>
     <tr>
-      <th scope="row"><?php echo $actors->id;  ?></th>
+      <th scope="row"><?php echo $numbers++;  ?></th>
       <td><?php echo $actors->firstname;?></td>
       <td><?php echo $actors->lastname;?></td>
     </tr>
