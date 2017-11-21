@@ -36,7 +36,7 @@
         <?php  
       $db=new PDOService();
 		  foreach ($db->getAllCategories() as $category){
-				echo '<a class="dropdown-item" href="'.$category->id.'">'.$category->name.'</a>';
+				echo '<a class="dropdown-item" href="category.php?catid='.$category->id.'">'.$category->name.'</a>';
 		  }?>
         </div>
       </li>

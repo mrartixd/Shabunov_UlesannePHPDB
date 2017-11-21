@@ -113,5 +113,47 @@ class PDOService implements IServiceDB
 		return $actors;
 	}
 
+
+
+	public function getFilmByCategory($id)//функция на поиск фильмов по переменной id
+	{	
+		$filmcat=null;
+		if ($this->connect()) {
+			if ($result = $this->connectDB->prepare('SELECT * FROM film WHERE film_id =ANY (SELECT DISTINCT film_id FROM category_film WHERE category_id=:id)')) {
+				$result->execute(array('id'=>$id));
+				//$result->execute(['id'=>$id]);
+                // $result->bindValue(':id', $id, PDO::PARAM_INT);
+                // $result->execute();
+				
+				$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+                foreach($rows as $row){
+					$filmcat[]=new Film($row['film_id'], $row['title'], $row['description'], 
+					$row['release_year'], $row['language_id'], $row=['length']);
+                 } 
+			}
+		}
+        $this->connectDB=null;
+	    return $filmcat;
+	}
+
+	public function getCategoryByID($id)
+	{	
+		$category=null;
+		if ($this->connect()) {
+			if ($result = $this->connectDB->prepare('SELECT * FROM category WHERE category_id=:id')) {
+				$result->execute(array('id'=>$id));
+	
+				
+				$numRows = $result->rowCount();
+				if ($numRows==1) {
+					$row=$result->fetch();
+					$category=new Category($row[0], $row[1]);
+				}
+			}
+		}
+        $this->connectDB=null;
+	    return $category;
+	}
+
 }
 

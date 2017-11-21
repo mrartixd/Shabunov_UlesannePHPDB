@@ -1,13 +1,4 @@
-<?php
-/*Artur Shabunov RDIR 51
-1. Комментарии по‎‎ программе в ‎‎пример кода. MoviesDB ‎‎(15 p.).‎
-‎2. Создайте menu-(Category) (5 стр.)-пожалуйста, добавьте функцию getAllCategories к классу. ‎
-‎3. список фильмов, отобранных в представлении по категориям (5 стр.)‎
-‎4. в окне Создание страницы из актеров (данные сортируются в порядке возрастания по фамилии). Отобразить список фильмов, отобранных актер (5 стр.)‎
-‎Используйте внешний CSS рамок (например, загрузки,...)‎
-*/
-
-require_once "autoloader.php";//подкгружаем php файл в котором происходит
+<?php require_once "autoloader.php";//подкгружаем php файл в котором происходит
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,22 +19,30 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Дом <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Дом </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="films.php">Фильмы</a>
+        <a class="nav-link" href="#">Фильмы<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="actors.php">Актеры</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Категории
+        <?php 
+        $db=new PDOService();
+        $cate=$db->getCategoryByID($_GET['catid']);
+        if (!is_null($cate)) {
+          echo $cate->name;
+        }
+        else {
+          echo "Категория";
+        } ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <?php  
-      $db=new PDOService();
+   
 		  foreach ($db->getAllCategories() as $category){
 				echo '<a class="dropdown-item" href="category.php?catid='.$category->id.'">'.$category->name.'</a>';
 		  }?>
@@ -53,9 +52,9 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
   </div>
 </nav>
 
-<div class="container" style="padding-top:20px; padding-bottom:20px;">
+<div class="container" style="padding-top:20px; padding-bottom:50px;">
   <div class="row">
-    <div class="col-4">
+    <div class="col-sm">
 	<div class="card" style="width: 20rem;">
   <div class="card-header">
     Задание
@@ -69,17 +68,25 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
   </ul>
 </div>
     </div>
-    <div class="col-8">
-	<div class="jumbotron">
-  <h1 class="display-3">Добро пожаловать!</h1>
-  <p class="lead">Сайт посвещен фильмам и его актерам</p>
-  <hr class="my-4">
-  <p>Здесь вы можете найти актеров, фильмы, категории любимых фильмов</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="films.php" role="button">Фильмы</a>
-	<a class="btn btn-primary btn-lg" href="actors.php" role="button">Актеры</a>
-  </p>
+    <?php 
+    foreach((object) $db->getFilmByCategory($_GET['catid']) as $catfilm){
+      if (!is_null($catfilm)){?>
+    <div class="col-sm"style="padding-bottom:15px;">
+    <div class="card" style="width: 20rem;">
+  <div class="card-body alert-secondary">
+    <h4 class="card-title"><?php echo $catfilm->title; ?></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><?php echo $catfilm->releaseYear; ?></h6>
+    <p class="card-text"><?php echo 'Описание: '.$catfilm->description; ?></p>
+    <p class="card-text"><?php echo 'Длинна фильма: '.$catfilm->length.' ч.'; ?></p>
+  </div>
 </div>
+    </div>
+    <?php 
+    }
+    else {
+      echo '<h1>Нету фильмов в этой категории</h1>';
+    }
+   } ?>
     </div>
   </div>
     </body>
