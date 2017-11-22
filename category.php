@@ -23,7 +23,7 @@
         <a class="nav-link" href="index.php">Дом </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Фильмы<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="films.php">Фильмы<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="actors.php">Актеры</a>
