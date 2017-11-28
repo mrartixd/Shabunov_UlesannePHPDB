@@ -71,7 +71,7 @@
     <?php 
     foreach((object) $db->getFilmByCategory($_GET['catid']) as $catfilm){
       if (!is_null($catfilm)){?>
-    <div class="col-sm"style="padding-bottom:15px;">
+    <div class="col-sm"style="padding-bottom:15px; padding-top:30px;">
     <div class="card" style="width: 20rem;">
   <div class="card-body alert-secondary">
     <h4 class="card-title"><?php echo $catfilm->title; ?></h4>
