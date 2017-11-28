@@ -55,7 +55,7 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
 
 <div class="container" style="padding-top:20px; padding-bottom:20px;">
   <div class="row">
-    <div class="col-4">
+    <div class="col-8 col-md-4">
 	<div class="card" style="width: 20rem;">
   <div class="card-header">
     Задание
@@ -69,9 +69,9 @@ require_once "autoloader.php";//подкгружаем php файл в кото�
   </ul>
 </div>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-md-8" style="padding-top:30px;">
 	<div class="jumbotron">
-  <h1 class="display-3">Добро пожаловать!</h1>
+  <h1 class="display-4">Добро пожаловать!</h1>
   <p class="lead">Сайт посвещен фильмам и его актерам</p>
   <hr class="my-4">
   <p>Здесь вы можете найти актеров, фильмы, категории любимых фильмов</p>

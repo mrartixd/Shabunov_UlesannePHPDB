@@ -61,7 +61,7 @@
 </div>
     </div>
     <?php foreach($db->getAllFilms() as $films){?>
-    <div class="col-sm"style="padding-bottom:15px;">
+    <div class="col-sm"style="padding-bottom:15px; padding-top:30px;" >
     <div class="card" style="width: 20rem;">
   <div class="card-body alert-secondary">
     <h4 class="card-title"><?php echo $films->title; ?></h4>

@@ -60,7 +60,7 @@
   </ul>
 </div>
     </div>
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8"  style="padding-top:30px;">
 <table class="table">
   <thead>
     <tr>
