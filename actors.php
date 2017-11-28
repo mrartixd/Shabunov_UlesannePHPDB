@@ -46,7 +46,7 @@
 
 <div class="container" style="padding-top:20px; padding-bottom:20px;">
   <div class="row">
-    <div class="col-4">
+    <div class="col-8 col-md-4">
 	<div class="card" style="width: 20rem;">
   <div class="card-header">
     Задание
@@ -60,7 +60,7 @@
   </ul>
 </div>
     </div>
-    <div class="col-8">
+    <div class="col-12 col-md-8">
 <table class="table">
   <thead>
     <tr>
